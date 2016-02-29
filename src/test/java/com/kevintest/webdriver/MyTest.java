@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.lang.String;
 
+import org.apache.bcel.generic.Select;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -86,9 +87,9 @@ public class MyTest {
             //set rules
             _driver.findElement(By.id("save_information")).click();
             str = tempName2;
-            System.out.println("Name is unique:" +str);
+            System.out.println("Rename List to:" +str);
         }else{
-            System.out.println("Name is not unique:" +str);
+            System.out.println("Name :" +str+" is unique.");
         }
 
         //Create prospects
@@ -134,9 +135,11 @@ public class MyTest {
         WebElement formatdropdown = _driver.findElement(By.id("message_format"));
         formatdropdown.isSelected();
 
-
         //sendemail;
-        //driver.findElement(By.xpath("//input[@type='button'][onclick='ckeditorSave'][@name='commit']")).click();
+       // _driver.findElement(By.xpath("//input[@type='button'][onclick='ckeditorSave'][@name='commit']")).click();
+        WebElement select = _driver.findElement(By.cssSelector("select[id='message_format']"));
+        select.click();
+
 
         //logout
         WebElement logout = _driver.findElement(By.linkText("pardot.applicant@pardot.com"));
