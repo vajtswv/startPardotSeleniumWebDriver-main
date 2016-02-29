@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.lang.String;
 
-import org.apache.bcel.generic.Select;
+//import org.apache.bcel.generic.Select;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -16,6 +16,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 
 /**
@@ -132,14 +133,14 @@ public class MyTest {
         subject.sendKeys(str);
 
         //format type
-        WebElement formatdropdown = _driver.findElement(By.id("message_format"));
-        formatdropdown.isSelected();
+        Select select = new Select(_driver.findElement(By.cssSelector("select[id='message_format']")));
+        select.selectByVisibleText("Text Only");
+       // WebElement formatdropdown = _driver.findElement(By.id("message_format"));
+        //formatdropdown.isSelected();
 
         //sendemail;
-       // _driver.findElement(By.xpath("//input[@type='button'][onclick='ckeditorSave'][@name='commit']")).click();
-        WebElement select = _driver.findElement(By.cssSelector("select[id='message_format']"));
-        select.click();
-
+        // _driver.findElement(By.xpath("//input[@type='button'][onclick='ckeditorSave'][@name='commit']")).click();
+      
 
         //logout
         WebElement logout = _driver.findElement(By.linkText("pardot.applicant@pardot.com"));
