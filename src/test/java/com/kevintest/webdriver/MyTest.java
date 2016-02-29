@@ -146,8 +146,6 @@ public class MyTest {
         logout.click();
         _driver.findElement(By.linkText("Sign Out")).click();
 
-
-
         return str;
 
     }
